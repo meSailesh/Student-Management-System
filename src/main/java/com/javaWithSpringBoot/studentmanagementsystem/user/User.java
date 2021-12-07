@@ -3,7 +3,7 @@ package com.javaWithSpringBoot.studentmanagementsystem.user;
 /**
  * Created by sailesh on 12/6/21.
  */
-public class user {
+public class User {
     private String email;
     private String password;
 

@@ -1,4 +1,4 @@
-package studentMarks;
+package com.javaWithSpringBoot.studentmanagementsystem.studentMarks;
 
 import java.util.List;
 

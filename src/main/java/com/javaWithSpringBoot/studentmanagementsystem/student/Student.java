@@ -1,5 +1,7 @@
 package com.javaWithSpringBoot.studentmanagementsystem.student;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
 /**

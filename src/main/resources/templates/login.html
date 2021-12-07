@@ -27,27 +27,29 @@
 <body>
 <!--Main Navigation-->
 <header>
-
+    <div class="container  d-flex justify-content-center align-items-center mt-5">
+        <h2 class="text-primary">Student Management System</h2>
+    </div>
 
     <!-- Background image -->
     <div id="intro">
         <div class="mask d-flex align-items-center h-100">
             <div class="container">
-                <div class="container d-flex justify-content-center" style="margin-bottom: 30px;">
-                    <h2>Student Management System</h2>
-                </div>
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-md-8">
-                        <form th:action="@{/login}" method="post" class="bg-white rounded shadow-5-strong p-5">
+                        <form th:action="@{/login}" th:object ="${user}" method="post" class="bg-white rounded shadow-5-strong p-5">
+
+                            <div th:text="${error}" class="text-danger text-center mb-5"></div>
+
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <input type="email" id="form1Example1" class="form-control" />
+                                <input type="email" id="form1Example1" th:field="*{email}" class="form-control" />
                                 <label class="form-label" for="form1Example1">Email address</label>
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input type="password" id="form1Example2" class="form-control" />
+                                <input type="password" id="form1Example2" th:field="*{password}" class="form-control" />
                                 <label class="form-label" for="form1Example2">Password</label>
                             </div>
 

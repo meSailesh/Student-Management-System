@@ -1,4 +1,4 @@
-package studentMarks;
+package com.javaWithSpringBoot.studentmanagementsystem.studentMarks;
 /**
  * Created by sailesh on 11/29/21.
  */

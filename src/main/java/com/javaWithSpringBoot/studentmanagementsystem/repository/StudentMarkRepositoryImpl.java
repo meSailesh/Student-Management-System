@@ -3,7 +3,7 @@ package com.javaWithSpringBoot.studentmanagementsystem.repository;
 
 
 import com.javaWithSpringBoot.studentmanagementsystem.utils.FileUtils;
-import studentMarks.StudentMark;
+import com.javaWithSpringBoot.studentmanagementsystem.studentMarks.StudentMark;
 
 import java.io.File;
 import java.util.ArrayList;

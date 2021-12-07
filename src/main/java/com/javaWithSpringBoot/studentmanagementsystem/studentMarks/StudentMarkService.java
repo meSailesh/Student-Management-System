@@ -1,8 +1,10 @@
-package studentMarks;
+package com.javaWithSpringBoot.studentmanagementsystem.studentMarks;
 
 
 import com.javaWithSpringBoot.studentmanagementsystem.repository.StudentMarkRepository;
 import com.javaWithSpringBoot.studentmanagementsystem.repository.StudentMarkRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +13,13 @@ import java.util.Map;
 /**
  * Created by sailesh on 11/26/21.
  */
+@Service
 public class StudentMarkService {
 
-    private static final Integer PASS_MARK = 40;
-    StudentMarkRepository studentMarkRepository = new StudentMarkRepositoryImpl();
+    @Autowired
+    StudentMarkRepository studentMarkRepository;
 
+    private static final Integer PASS_MARK = 40;
     public List<StudentMark> insertMarksForTheStudent(Integer studentId, Map<Integer, Double> subjectMarksMap)  {
         List<StudentMark> studentMarkList = new ArrayList<>();
         for(Integer subjectId : subjectMarksMap.keySet()) {
