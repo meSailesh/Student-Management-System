@@ -9,7 +9,6 @@ import java.util.List;
  * Created by sailesh on 11/26/21.
  */
 
-@Repository
 public interface StudentMarkRepository {
 
     List<StudentMark> createStudentMark(List<StudentMark> studentMarkList);

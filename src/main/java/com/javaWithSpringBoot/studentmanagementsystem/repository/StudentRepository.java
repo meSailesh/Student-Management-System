@@ -9,7 +9,6 @@ import java.util.List;
 /**
  * Created by sailesh on 11/23/21.
  */
-@Repository
 public interface StudentRepository {
 
     Student saveStudentDetails(Student student);

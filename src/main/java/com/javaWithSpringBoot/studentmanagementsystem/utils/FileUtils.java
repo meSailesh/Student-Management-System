@@ -1,5 +1,8 @@
 package com.javaWithSpringBoot.studentmanagementsystem.utils;
 
+import org.springframework.core.io.ClassPathResource;
+
+import javax.annotation.Resource;
 import java.io.*;
 
 /**
@@ -7,7 +10,7 @@ import java.io.*;
  */
 public class FileUtils {
 
-    public static final String BASE_PATH = "./src/files/";
+    public static final String BASE_PATH = "/files/";
 
     public static File getFile(String fileName) {
         //if not exists create file
@@ -21,7 +24,7 @@ public class FileUtils {
         String path = BASE_PATH + fileName;
 
        try {
-           File file = new File(path);
+           File file = new ClassPathResource(path).getFile();
            if( file.createNewFile()) {
                System.out.println(fileName + "created successfully");
            }

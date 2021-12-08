@@ -1,5 +1,0 @@
-2,sabin,21,male,pkr,Sat Jan 01 00:00:00 NPT 2000
-3,unitTesting,15,unknown,console,Tue Nov 30 21:00:23 NPT 2021
-4,unitTesting,15,unknown,console,Tue Nov 30 21:00:42 NPT 2021
-5,unitTesting,15,unknown,console,Tue Nov 30 21:01:25 NPT 2021
-6,unitTesting,15,unknown,console,Tue Nov 30 21:01:48 NPT 2021

@@ -1,5 +1,6 @@
 package com.javaWithSpringBoot.studentmanagementsystem.student;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ public class Student {
     private String name;
     private Integer age;
     private String address;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dob;
     private String gender;
 

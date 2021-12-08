@@ -82,50 +82,54 @@
 <!--Main layout-->
 <main style="margin-top: 58px">
     <div class="container pt-4">
-       <div class="container">
-           <div class="row alert alert-success" th:if="${message}" th:text="${message}"></div>
-           <div class="row">
-            <div class="col mb-4">  <a  th:href="@{/create-student}" class="btn btn-success" >Create Student</a></div>
-           </div>
-           <div class="col"></div>
-           <div class="row">
-               <section>
-                   <table id="student-table" class="table table-striped" cellspacing="0" width="100%">
-                       <thead>
-                       <tr>
-                           <th class="th-sm">Name
-                           </th>
-                           <th class="th-sm">Age
-                           </th>
-                           <th class="th-sm">Address
-                           </th>
-                           <th class="th-sm">Date of Birth
-                           </th>
-                           <th class="th-sm">Gender
-                           </th>
+        <div class="container">
+            <div class="row alert alert-danger" th:if="${error}" th:text="${error}">
 
-                           <th class="th-sm">Action
-                           </th>
-                       </tr>
-                       </thead>
-                       <tbody>
-                       <tr th:each="student : ${students}">
-                           <td th:text="${student.name}"></td>
-                           <td th:text="${student.age}"></td>
-                           <td th:text="${student.address}"></td>
-                           <td th:text="${student.dob}"></td>
-                           <td th:text="${student.gender}"></td>
+            </div>
+            <div class="col"></div>
+            <div class="row">
+                <form th:object="${student}" method="post" th:action="@{/create-student}">
+                    <!-- 2 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="text" id="form6Example1" class="form-control" th:field="*{name}"/>
+                                <label class="form-label" for="form6Example1">name</label>
+                            </div>
+                        </div>
+                    </div>
 
-                           <td>
-                               <a  class="btn btn-info" >update</a> <a  class="btn btn-danger" >delete</a>
-                           </td>
-                       </tr>
-                       </tbody>
-                   </table>
+                    <!-- Text input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" id="form6Example3" class="form-control" th:field="*{address}" />
+                        <label class="form-label" for="form6Example3">Address</label>
+                    </div>
 
-               </section>
-           </div>
-       </div>
+                    <!-- Text input -->
+                    <div class="form-outline mb-4">
+                        <input type="number" id="form6Example4" class="form-control" th:field="*{age}" />
+                        <label class="form-label" for="form6Example4">Age</label>
+                    </div>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="date" id="form6Example5" class="form-control" th:field="*{dob}"/>
+                        <label class="form-label" for="form6Example5">Date Of Birth</label>
+                    </div>
+
+                    <!-- Number input -->
+
+                    <!-- Text input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" id="form" class="form-control" th:field="*{gender}"/>
+                        <label class="form-label" for="form6Example3">Gender</label>
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Create Student</button>
+                </form>
+            </div>
+        </div>
 
 
     </div>

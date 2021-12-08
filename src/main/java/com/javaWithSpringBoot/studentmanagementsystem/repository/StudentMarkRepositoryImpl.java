@@ -4,6 +4,7 @@ package com.javaWithSpringBoot.studentmanagementsystem.repository;
 
 import com.javaWithSpringBoot.studentmanagementsystem.utils.FileUtils;
 import com.javaWithSpringBoot.studentmanagementsystem.studentMarks.StudentMark;
+import org.springframework.stereotype.Repository;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ import java.util.List;
 /**
  * Created by sailesh on 11/26/21.
  */
+@Repository
+
 public class StudentMarkRepositoryImpl implements StudentMarkRepository
 {
 

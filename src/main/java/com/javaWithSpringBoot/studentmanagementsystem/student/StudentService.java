@@ -17,16 +17,23 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
-    public Student createStudent(String name, String address, String gender, Date dob, Integer age) {
-        Student student = new Student();
-        student.setName(name);
-        student.setAge(age);
-        student.setAddress(address);
-        student.setGender(gender);
-        student.setDob(dob);
+    public Student createStudent(Student student) {
 
-        Student savedStudent = studentRepository.saveStudentDetails(student);
-        return  savedStudent;
+        Boolean isValid = validateStudent(student);
+        if(isValid) {
+            Student savedStudent = studentRepository.saveStudentDetails(student);
+            return  savedStudent;
+        }
+        return null;
+    }
+
+    private Boolean validateStudent(Student student) {
+            if(student == null || student.getName().isEmpty() || student.getAddress().isEmpty() || student.getAge() == null || student.getDob() == null || student.getGender().isEmpty()) {
+                return false;
+            }
+
+        return true;
+
     }
 
     public List<Student> getAllStudents() {

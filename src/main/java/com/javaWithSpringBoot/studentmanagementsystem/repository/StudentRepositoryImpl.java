@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by sailesh on 11/23/21.
  */
-
+@Repository
 public class StudentRepositoryImpl implements StudentRepository {
 
     private static final String FILE_NAME = "students.txt";
