@@ -74,16 +74,10 @@ public class StudentRepositoryImpl implements StudentRepository {
         }
 
         File studentFile = FileUtils.getFile(FILE_NAME);
-        if(studentFile.delete()) {
 
-        } else {
-            System.out.println("Could not delete file");
-        }
+        String newStudentRecords = (students !=null && !students.isEmpty()) ? createStudentRecords(students) : "";
 
-        File newFile = FileUtils.getFile(FILE_NAME);
-        String newStudentRecords = createStudentRecords(students);
-
-        Boolean isSaved = FileUtils.writeDataToFile(newFile, newStudentRecords);
+        Boolean isSaved = FileUtils.writeDataToFile(studentFile, newStudentRecords);
 
         if(isSaved) {
             return studentFromConsole;
@@ -149,16 +143,10 @@ public class StudentRepositoryImpl implements StudentRepository {
        }
 
         File studentFile = FileUtils.getFile(FILE_NAME);
-        if(studentFile.delete()) {
 
-        } else {
-            System.out.println("Could not delete file");
-        }
+        String newStudentRecords = (students !=null && !students.isEmpty()) ? createStudentRecords(students) : "";
 
-        File newFile = FileUtils.getFile(FILE_NAME);
-        String newStudentRecords = createStudentRecords(students);
-
-        Boolean isSaved = FileUtils.writeDataToFile(newFile, newStudentRecords);
+        Boolean isSaved = FileUtils.writeDataToFile(studentFile, newStudentRecords);
 
         if(isSaved) {
             return true;

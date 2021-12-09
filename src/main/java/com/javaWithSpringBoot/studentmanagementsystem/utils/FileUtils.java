@@ -47,7 +47,7 @@ public class FileUtils {
     private static  Boolean writeDataToFile(File file, String record, Boolean isAppend) {
         try{
             FileWriter fileWriter = new FileWriter(file,isAppend);
-            String newRecord = record+"\n";
+            String newRecord = (record.isEmpty()) ? record : record+"\n";
             fileWriter.write(newRecord);
 
             fileWriter.close();

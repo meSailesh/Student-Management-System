@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -41,7 +42,7 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/students")
+    @GetMapping("/student/all")
     public String viewStudents(Model model) {
         List<Student> students = studentService.getAllStudents();
         model.addAttribute("students", students);
@@ -58,22 +59,62 @@ public class HomeController {
         return "results";
     }
 
-    @GetMapping("/create-student")
+    @GetMapping("/student/create")
     public String createStudentPage(Model model) {
         model.addAttribute("student", new Student());
         return "create-student";
     }
 
-    @PostMapping("/create-student")
+    @PostMapping("/student/create")
     public String createStudent(@ModelAttribute("student")Student student, Model model, RedirectAttributes redirectAttributes) {
 
         Student savedStudent = studentService.createStudent(student);
         if(savedStudent != null) {
             redirectAttributes.addFlashAttribute("message", "Student Created successfully!");
-            return "redirect:/students";
+            return "redirect:/student/all";
         }
         model.addAttribute("error", "Error saving student details. Please retry!");
         return "create-student";
+
+    }
+
+    @GetMapping("/student/{id}")
+    public String viewStudentDetails(@PathVariable(value = "id")Integer id, Model model) {
+        Student student = studentService.getStudentDetails(id);
+        model.addAttribute("student", student);
+        return "student-detail";
+    }
+
+    @GetMapping("/student/update/{id}")
+    public String updateStudentDetailsPage(@PathVariable(value = "id")Integer id, Model model) {
+        Student student = studentService.getStudentDetails(id);
+        model.addAttribute("student", student);
+        return "update-student";
+    }
+
+    @PostMapping("/student/update")
+    public String updateStudentDetails(@ModelAttribute("student")Student student, Model model, RedirectAttributes redirectAttributes) {
+
+        Student updatedStudent = studentService.updateStudentDetails(student);
+        if(updatedStudent != null) {
+            redirectAttributes.addFlashAttribute("message", "Student updated successfully!");
+            return "redirect:/student/all";
+        }
+        model.addAttribute("error", "Error updating student details. Please retry!");
+        return "update-student";
+
+    }
+
+    @GetMapping("/student/delete/{id}")
+    public String deleteStudent(@PathVariable(value = "id")Integer id, Model model) {
+
+        Boolean isDeleted = studentService.deleteStudent(id);
+        if(isDeleted) {
+            model.addAttribute("message", "Student deleted successfully!");
+        } else {
+            model.addAttribute("error", "Error deleting student details. Please retry!");
+        }
+        return "students";
 
     }
 }
