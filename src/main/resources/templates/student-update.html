@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th = "http://www.thymeleaf.org/">
 <head>
-  <div th:replace="common :: head"></div>
+    <div th:replace="common :: head"></div>
 
 </head>
 
@@ -23,8 +23,11 @@
                 <div class="row alert alert-danger" th:if="${error}" th:text="${error}">
                 </div>
                 <div class="row">
-                    <form th:object="${student}" method="post" th:action="@{/student/create}">
+                    <form th:object="${student}" method="post" th:action="@{/student/update}">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
+
+                        <input type="hidden" th:field="*{studentId}" />
+
                         <div class="row mb-4">
                             <div class="col">
                                 <div class="form-outline">
@@ -61,7 +64,7 @@
                         </div>
 
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-block mb-4">Create Student</button>
+                        <button type="submit" class="btn btn-primary btn-block mb-4">Update Student</button>
                     </form>
                 </div>
             </div>

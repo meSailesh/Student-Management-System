@@ -1,82 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th = "http://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Student Management System</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-    <!-- Google Fonts Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
-    <link
-            th:href="@{/css/mdb.min.css}"
-            rel="stylesheet"
-    />
-    <!-- Custom styles -->
-    <link rel="stylesheet" th:href="@{/css/dashboard.css}" />
-    <link rel="stylesheet" th:href="@{/css/datatable.min.css}" />
-
+    <div th:replace="common :: head"></div>
 </head>
 
 <body>
 <!--Main Navigation-->
-<header>
-    <!-- Sidebar -->
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-        <div class="position-sticky">
-            <div class="list-group list-group-flush mx-3 mt-4">
-                <a th:href="@{/dashboard}" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
-                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
-                </a>
-                <a th:href="@{/students}" class="list-group-item list-group-item-action py-2 ripple active">
-                    <i class="fas fa-user fa-fw me-3"></i><span>Students </span>
-                </a>
-                <a th:href="@{/subjects}" class="list-group-item list-group-item-action py-2 ripple">
-                    <i class="fas fa-book fa-fw me-3"></i><span>Subjects </span>
-                </a>
-
-                <a th:href="@{/results}" class="list-group-item list-group-item-action py-2 ripple">
-                    <i class="fas fa-graduation-cap fa-fw me-3"></i><span>Exam Results </span>
-                </a>
-
-
-            </div>
-        </div>
-    </nav>
-
-
-    <!-- Sidebar -->
-
-    <!-- Navbar -->
-    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-        <!-- Container wrapper -->
-        <div class="container-fluid">
-            <!-- Toggle button -->
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
-                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <!-- Brand -->
-            <a class="navbar-brand" href="#">
-                Student Management System
-            </a>
-
-
-            <!-- Right links -->
-            <ul class="navbar-nav ms-auto d-flex flex-row">
-
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
-                </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- Container wrapper -->
-    </nav>
-    <!-- Navbar -->
-</header>
+<div th:replace="common :: header"></div>
 <!--Main Navigation-->
 
 <!--Main layout-->
@@ -85,7 +15,7 @@
        <div class="container">
            <div class="row alert alert-success" th:if="${message}" th:text="${message}"></div>
            <div class="row">
-            <div class="col mb-4">  <a  th:href="@{/create-student}" class="btn btn-success" >Create Student</a></div>
+            <div class="col mb-4">  <a  th:href="@{/student/create}" class="btn btn-success" >Create Student</a></div>
            </div>
            <div class="col"></div>
            <div class="row">
@@ -117,7 +47,10 @@
                            <td th:text="${student.gender}"></td>
 
                            <td>
-                               <a  class="btn btn-info" >update</a> <a  class="btn btn-danger" >delete</a>
+                               <a  class="btn btn-warning" th:href="@{/student/{id}(id=${student.studentId})}">View</a>
+                               <a  class="btn btn-info" th:href="@{/student/update/{id}(id=${student.studentId})}" >update</a>
+                               <a  class="btn btn-danger"  id="delete_student_button" th:attr="data-id = ${student.studentId}">delete</a>
+                               <!-- Button trigger modal -->
                            </td>
                        </tr>
                        </tbody>
@@ -125,20 +58,45 @@
 
                </section>
            </div>
+           <div class="row">
+
+
+               <!-- Modal -->
+               <div
+                       class="modal fade"
+                       id="delete_student_modal"
+                       tabindex="-1"
+                       aria-labelledby="exampleModalLabel"
+                       aria-hidden="true"
+               >
+                   <div class="modal-dialog">
+                       <div class="modal-content">
+                           <div class="modal-header">
+                               <h5 class="modal-title" id="exampleModalLabel">Delete Student</h5>
+                               <button
+                                       type="button"
+                                       class="btn-close"
+                                       data-mdb-dismiss="modal"
+                                       aria-label="Close"
+                               ></button>
+                           </div>
+                           <div class="modal-body">Are you sure want to delete this student?</div>
+                           <div class="modal-footer">
+                               <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                                   Close
+                               </button>
+                               <a th:href="@{/student/delete/{id}(id=_id_)}" id="delete_button_modal" class="btn btn-primary">Delete</a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
        </div>
 
 
     </div>
 </main>
 <!--Main layout-->
-
-
-
-<!-- MDB -->
-<script type="text/javascript" th:src="@{js/jquery.min.js}"></script>
-<script type="text/javascript" th:src="@{js/datatable.min.js}"></script><!-- Custom scripts -->
-<script type ="text/javascript" th:src="@{js/mdb.min.js}"></script>
-<script type="text/javascript" th:src="@{js/dashboard.js}"></script>
-s
+<div th:replace="common :: footer"></div>
 </body>
 </html>

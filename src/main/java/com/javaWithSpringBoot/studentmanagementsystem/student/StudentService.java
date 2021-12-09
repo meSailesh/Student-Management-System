@@ -44,15 +44,12 @@ public class StudentService {
         return studentRepository.getStudentDetails(studentId);
     }
 
-    public Student updateStudentDetails(Integer studentId, String name, String address, String gender, Date dob, Integer age) {
-        Student student = new Student();
-        student.setStudentId(studentId);
-        student.setName(name);
-        student.setAge(age);
-        student.setAddress(address);
-        student.setGender(gender);
-        student.setDob(dob);
-        return  studentRepository.updateStudentDetails(student);
+    public Student updateStudentDetails(Student student) {
+        Boolean isValid = validateStudent(student);
+        if(isValid) {
+            return studentRepository.updateStudentDetails(student);
+        }
+        return  null;
     }
 
     public Boolean deleteStudent(Integer studentId) {

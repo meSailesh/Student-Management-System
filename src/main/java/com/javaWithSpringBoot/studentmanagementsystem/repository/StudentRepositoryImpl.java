@@ -41,7 +41,7 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     @Override
-    public Student updateStudentDetails(Student studentFromConsole) {
+    public Student updateStudentDetails(Student studentToUpdate) {
         //fetching all the records
         //Find the record for the specific student that we want to update
         //finally save all the details
@@ -57,36 +57,40 @@ public class StudentRepositoryImpl implements StudentRepository {
         List<Student> students = getAllStudentDetails();
         if(students != null && !students.isEmpty()) {
            for(Student student1 : students) {
-               if(student1.getStudentId().equals(studentFromConsole.getStudentId())) {
-                   if(studentFromConsole.getStudentId() != null && !studentFromConsole.getStudentId().equals(student1.getStudentId())) {
-                       student1.setStudentId(studentFromConsole.getStudentId());
+               if(student1.getStudentId().equals(studentToUpdate.getStudentId())) {
+                   if(studentToUpdate.getStudentId() != null && !studentToUpdate.getStudentId().equals(student1.getStudentId())) {
+                       student1.setStudentId(studentToUpdate.getStudentId());
                    }
-                   if(studentFromConsole.getName() != null && !studentFromConsole.getName().equals(student1.getName())) {
-                       student1.setName(studentFromConsole.getName());
+                   if(studentToUpdate.getName() != null && !studentToUpdate.getName().equals(student1.getName())) {
+                       student1.setName(studentToUpdate.getName());
                    }
-                   if(studentFromConsole.getAge() != null && !studentFromConsole.getAge().equals(student1.getAge())) {
-                       student1.setAge(studentFromConsole.getAge());
+                   if(studentToUpdate.getAge() != null && !studentToUpdate.getAge().equals(student1.getAge())) {
+                       student1.setAge(studentToUpdate.getAge());
                    }
 
+                   if(studentToUpdate.getAddress() != null && !studentToUpdate.getAddress().equals(student1.getAddress())) {
+                       student1.setAddress(studentToUpdate.getAddress());
+                   }
 
+                   if(studentToUpdate.getGender() != null && !studentToUpdate.getGender().equals(student1.getGender())) {
+                       student1.setGender(studentToUpdate.getGender());
+                   }
+
+                   if(studentToUpdate.getDob() != null && !studentToUpdate.getDob().equals(student1.getDob())) {
+                       student1.setDob(studentToUpdate.getDob());
+                   }
                }
            }
         }
 
         File studentFile = FileUtils.getFile(FILE_NAME);
-        if(studentFile.delete()) {
 
-        } else {
-            System.out.println("Could not delete file");
-        }
-
-        File newFile = FileUtils.getFile(FILE_NAME);
         String newStudentRecords = createStudentRecords(students);
 
-        Boolean isSaved = FileUtils.writeDataToFile(newFile, newStudentRecords);
+        Boolean isSaved = FileUtils.writeDataToFile(studentFile, newStudentRecords);
 
         if(isSaved) {
-            return studentFromConsole;
+            return studentToUpdate;
         }
 
         return null;
@@ -149,16 +153,8 @@ public class StudentRepositoryImpl implements StudentRepository {
        }
 
         File studentFile = FileUtils.getFile(FILE_NAME);
-        if(studentFile.delete()) {
-
-        } else {
-            System.out.println("Could not delete file");
-        }
-
-        File newFile = FileUtils.getFile(FILE_NAME);
         String newStudentRecords = createStudentRecords(students);
-
-        Boolean isSaved = FileUtils.writeDataToFile(newFile, newStudentRecords);
+        Boolean isSaved = FileUtils.writeDataToFile(studentFile, newStudentRecords);
 
         if(isSaved) {
             return true;
