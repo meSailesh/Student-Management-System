@@ -1,7 +1,8 @@
 package com.javaWithSpringBoot.studentmanagementsystem.student;
 
 import com.javaWithSpringBoot.studentmanagementsystem.repository.StudentRepository;
-import com.javaWithSpringBoot.studentmanagementsystem.repository.StudentRepositoryImpl;
+//import com.javaWithSpringBoot.studentmanagementsystem.repository.StudentRepositoryImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class StudentService {
 
         Boolean isValid = validateStudent(student);
         if(isValid) {
-            Student savedStudent = studentRepository.saveStudentDetails(student);
+            Student savedStudent = studentRepository.save(student);
             return  savedStudent;
         }
         return null;
@@ -37,23 +38,27 @@ public class StudentService {
     }
 
     public List<Student> getAllStudents() {
-        return studentRepository.getAllStudentDetails();
+        return studentRepository.findAll();
     }
 
     public Student getStudentDetails(Integer studentId) {
-        return studentRepository.getStudentDetails(studentId);
+        return studentRepository.findById(studentId).get();
     }
 
     public Student updateStudentDetails(Student student) {
         Boolean isValid = validateStudent(student);
         if(isValid) {
-            return studentRepository.updateStudentDetails(student);
+//            Student existingStudent = getStudentDetails(student.getStudentId());
+//            BeanUtils.copyProperties(student, existingStudent);
+             return studentRepository.save(student);
         }
         return  null;
     }
 
     public Boolean deleteStudent(Integer studentId) {
-        return studentRepository.deleteStudent(studentId);
+        Student student = getStudentDetails(studentId);
+         studentRepository.delete(student);
+        return true;
     }
 
 

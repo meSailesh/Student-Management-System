@@ -49,7 +49,7 @@
                            <td>
                                <a  class="btn btn-warning" th:href="@{/student/{id}(id=${student.studentId})}">View</a>
                                <a  class="btn btn-info" th:href="@{/student/update/{id}(id=${student.studentId})}" >update</a>
-                               <a  class="btn btn-danger"  id="delete_student_button" th:attr="data-id = ${student.studentId}">delete</a>
+                               <a  class="btn btn-danger delete_student_button" th:attr="data-id = ${student.studentId}">delete</a>
                                <!-- Button trigger modal -->
                            </td>
                        </tr>

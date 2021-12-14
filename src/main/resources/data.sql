@@ -1,7 +1,3 @@
-create table test (
-field1 INTEGER ,
-field2 VARCHAR
-);
+insert into student(name, age, address, dob, gender) VALUES ('sailesh', 27, 'ktm', CURRENT_DATE , 'male');
 
-
-insert into test values(1, 'sailesh');
+-- insert into subject(subject_name) VALUES ('math');
