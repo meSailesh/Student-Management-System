@@ -25,10 +25,7 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/dashboard")
-    public String viewDashboard() {
-        return  "dashboard";
-    }
+
 
     @PostMapping("/login")
     public String login(@ModelAttribute("user")User user, Model model) {
@@ -37,6 +34,14 @@ public class HomeController {
         }
         model.addAttribute("error", "Email or password don't match.");
         return "login";
+    }
+    @GetMapping("/dashboard")
+    public String viewDashboard(Model model) {
+        List<Student> students = studentService.getAllStudents();
+        Integer sizes = students.size();
+        System.out.println(sizes);
+        model.addAttribute("studentLength", sizes);
+        return  "dashboard";
     }
 
     @GetMapping("/student/all")

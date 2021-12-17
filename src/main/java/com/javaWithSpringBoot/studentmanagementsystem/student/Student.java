@@ -1,20 +1,30 @@
 package com.javaWithSpringBoot.studentmanagementsystem.student;
 
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
 import java.util.Date;
 
-/**
- * Created by sailesh on 11/23/21.
- */
+@Entity
+@Table(name = "student")
 public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer studentId;
+    @Column(name = "name")
     private String name;
+    @Column(name = "age")
     private Integer age;
+    @Column(name = "address")
     private String address;
+    @Column(name = "dob")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     private Date dob;
+    @Column(name = "gender")
     private String gender;
 
     public Integer getStudentId() {

@@ -1,0 +1,1 @@
+insert into student (name, age, address, dob, gender) VALUES ('pujan', 25, 'ktm',CURRENT_DATE ,'male' )
