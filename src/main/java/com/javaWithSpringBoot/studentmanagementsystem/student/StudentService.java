@@ -38,11 +38,11 @@ public class StudentService {
     }
 
     public List<Student> getAllStudents() {
-        return studentRepository.findAll();
+        return studentRepository.getAllStudentDetails();
     }
 
     public Student getStudentDetails(Integer studentId) {
-        return studentRepository.findById(studentId).get();
+        return studentRepository.getStudentDetails(studentId);
     }
 
     public Student updateStudentDetails(Student student) {
@@ -50,14 +50,14 @@ public class StudentService {
         if(isValid) {
 //            Student existingStudent = getStudentDetails(student.getStudentId());
 //            BeanUtils.copyProperties(student, existingStudent);
-             return studentRepository.save(student);
+             return studentRepository.updateStudentDetails(student);
         }
         return  null;
     }
 
     public Boolean deleteStudent(Integer studentId) {
         Student student = getStudentDetails(studentId);
-         studentRepository.delete(student);
+         studentRepository.deleteStudent(student);
         return true;
     }
 
