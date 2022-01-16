@@ -1,4 +1,4 @@
-package com.javaWithSpringBoot.studentmanagementsystem.studentMarks;
+package com.javaWithSpringBoot.studentmanagementsystem.model;
 /**
  * Created by sailesh on 11/29/21.
  */

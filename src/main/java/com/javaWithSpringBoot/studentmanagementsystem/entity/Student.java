@@ -1,4 +1,4 @@
-package com.javaWithSpringBoot.studentmanagementsystem.student;
+package com.javaWithSpringBoot.studentmanagementsystem.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

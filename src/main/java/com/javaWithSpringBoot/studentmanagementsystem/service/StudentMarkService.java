@@ -1,8 +1,9 @@
-package com.javaWithSpringBoot.studentmanagementsystem.studentMarks;
+package com.javaWithSpringBoot.studentmanagementsystem.service;
 
 
+import com.javaWithSpringBoot.studentmanagementsystem.model.Result;
+import com.javaWithSpringBoot.studentmanagementsystem.model.StudentMark;
 import com.javaWithSpringBoot.studentmanagementsystem.repository.StudentMarkRepository;
-import com.javaWithSpringBoot.studentmanagementsystem.repository.StudentMarkRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,10 +70,3 @@ public class StudentMarkService {
         return studentMarkRepository.getStudentMark(studentId);
     }
 }
-
-
-// 1 56
-// 2 69
-// 3 85
-
-//[1, 2 ,3]

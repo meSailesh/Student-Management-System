@@ -3,11 +3,10 @@ package com.javaWithSpringBoot.studentmanagementsystem.repository;
 
 
 import com.javaWithSpringBoot.studentmanagementsystem.repository.custom.StudentRepositoryCustom;
-import com.javaWithSpringBoot.studentmanagementsystem.student.Student;
+import com.javaWithSpringBoot.studentmanagementsystem.entity.Student;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.javaWithSpringBoot.studentmanagementsystem.repository.custom;
 
-import com.javaWithSpringBoot.studentmanagementsystem.student.Student;
+import com.javaWithSpringBoot.studentmanagementsystem.entity.Student;
 
 import java.util.List;
 

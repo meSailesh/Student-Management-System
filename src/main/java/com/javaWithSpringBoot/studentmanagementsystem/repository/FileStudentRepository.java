@@ -1,6 +1,6 @@
 package com.javaWithSpringBoot.studentmanagementsystem.repository;
 
-import com.javaWithSpringBoot.studentmanagementsystem.student.Student;
+import com.javaWithSpringBoot.studentmanagementsystem.entity.Student;
 import com.javaWithSpringBoot.studentmanagementsystem.utils.FileUtils;
 
 import java.io.File;

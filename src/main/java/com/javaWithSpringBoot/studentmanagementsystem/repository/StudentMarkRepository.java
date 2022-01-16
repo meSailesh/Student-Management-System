@@ -1,7 +1,6 @@
 package com.javaWithSpringBoot.studentmanagementsystem.repository;
 
-import com.javaWithSpringBoot.studentmanagementsystem.studentMarks.StudentMark;
-import org.springframework.stereotype.Repository;
+import com.javaWithSpringBoot.studentmanagementsystem.model.StudentMark;
 
 import java.util.List;
 

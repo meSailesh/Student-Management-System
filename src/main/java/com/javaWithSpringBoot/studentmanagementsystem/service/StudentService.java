@@ -1,12 +1,11 @@
-package com.javaWithSpringBoot.studentmanagementsystem.student;
+package com.javaWithSpringBoot.studentmanagementsystem.service;
 
+import com.javaWithSpringBoot.studentmanagementsystem.entity.Student;
 import com.javaWithSpringBoot.studentmanagementsystem.repository.StudentRepository;
 //import com.javaWithSpringBoot.studentmanagementsystem.repository.StudentRepositoryImpl;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -59,6 +58,10 @@ public class StudentService {
         Student student = getStudentDetails(studentId);
          studentRepository.deleteStudent(student);
         return true;
+    }
+
+    public Long getStudentCount() {
+        return studentRepository.count();
     }
 
 

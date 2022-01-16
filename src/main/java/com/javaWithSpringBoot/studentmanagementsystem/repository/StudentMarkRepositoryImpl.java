@@ -3,7 +3,7 @@ package com.javaWithSpringBoot.studentmanagementsystem.repository;
 
 
 import com.javaWithSpringBoot.studentmanagementsystem.utils.FileUtils;
-import com.javaWithSpringBoot.studentmanagementsystem.studentMarks.StudentMark;
+import com.javaWithSpringBoot.studentmanagementsystem.model.StudentMark;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;

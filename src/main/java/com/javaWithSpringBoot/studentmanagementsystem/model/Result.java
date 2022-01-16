@@ -1,4 +1,4 @@
-package com.javaWithSpringBoot.studentmanagementsystem.studentMarks;
+package com.javaWithSpringBoot.studentmanagementsystem.model;
 
 import java.util.List;
 
