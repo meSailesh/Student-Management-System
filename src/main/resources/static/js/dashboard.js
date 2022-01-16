@@ -2,7 +2,7 @@ $(document).ready( function () {
     $('#student-table').DataTable();
 
 
-    $("#delete_student_button").on("click", function(e) {
+    $(".delete_student_button").on("click", function(e) {
         e.preventDefault();
         console.log("inside");
 
