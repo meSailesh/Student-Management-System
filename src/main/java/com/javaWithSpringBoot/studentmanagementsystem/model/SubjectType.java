@@ -32,5 +32,14 @@ public enum SubjectType {
         }
         return  null;
     }
+
+    public static SubjectType lookupByDesc(String desc) {
+        for(SubjectType subjectType : SubjectType.values()) {
+            if(subjectType.getDesc().equals(desc)) {
+                return subjectType;
+            }
+        }
+        return  null;
+    }
 }
 

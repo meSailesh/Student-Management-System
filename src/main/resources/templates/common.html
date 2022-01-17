@@ -24,7 +24,7 @@
 <body>
 <!--Main Navigation-->
 <div th:fragment="header">
-    <header>
+    <header class="no-print">
         <!-- Sidebar -->
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
             <div class="position-sticky">
@@ -39,7 +39,7 @@
                         <i class="fas fa-book fa-fw me-3"></i><span>Subjects </span>
                     </a>
 
-                    <a th:href="@{/results}" class="list-group-item list-group-item-action py-2 ripple " th:classappend="${#httpServletRequest.getRequestURI().startsWith('/result') ? 'active':''}">
+                    <a th:href="@{/result/all}" class="list-group-item list-group-item-action py-2 ripple " th:classappend="${#httpServletRequest.getRequestURI().startsWith('/result') ? 'active':''}">
                         <i class="fas fa-graduation-cap fa-fw me-3"></i><span>Exam Results </span>
                     </a>
 
@@ -69,10 +69,28 @@
 
                 <!-- Right links -->
                 <ul class="navbar-nav ms-auto d-flex flex-row">
+                    <!-- Icon -->
+                    <li class="nav-item me-3 me-lg-0">
+                        <a class="nav-link" href="https://github.com/meSailesh">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
 
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
+                    <!-- Avatar -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+                           id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <img th:src="@{~/images/photo.png}" class="rounded-circle" height="22"
+                                 alt="" loading="lazy" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">My profile</a></li>
+                            <li>
+                                <form class="form-inline my-2" th:method="post" th:action="@{/logout}">
+                                    <a class="dropdown-item" onclick="this.parentNode.submit();">Logout</a>
+                                </form>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<head>
+    <div th:replace="common :: head"></div>
+
+</head>
+
+<body>
+<!--Main Navigation-->
+<div  th:replace="common :: header"></div>
+
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <div class="row mb-4 no-print" >
+            <div class="col"><a th:href="@{/result/all}" class="btn btn-info" ><i class="fas fa-chevron-left"></i> Back</a></div>
+            <div class="col "><a onclick="window.print()" class="btn btn-danger float-end mx-5" ><i class="fas fa-print"></i> Print</a></div>
+        </div>
+        <div class="row">
+            <div class="container">
+
+                <div class="card border border-primary mb-5 print-only">
+                    <div class="card-header text-primary text-center h2">Student Management System</div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row"><p class="text-center h3 mb-4">MARK - SHEET</p></div>
+                            <div class="row" th:object="${result.student}">
+                                <p class="text-primary lh-3">THE MARKS SECURED BY <span class="result-field name" th:text="*{name}"></span> <br/>
+                                    DATE OF BIRTH: <span class="result-field dob" th:text="*{#dates.format(dob,'dd-MM-yyyy')}"></span> <br/>
+                                    ROLL: <span class="result-field student-id" th:text="*{studentId}"></span> &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; AGE: <span class="result-field age">25</span> <br/>
+                                    OF: <span class="result-field address" th:text="*{address}" ></span>
+                                IN THE ANNUAL EXAMINATION OF <span class="result-field date date">2022</span> ARE GIVEN BELOW:</p>
+                            </div>
+                            <div class="row mt-4">
+                                <table class="table table-bordered">
+                                    <tr class="text-primary">
+                                        <th>SN</th>
+                                        <th>SUBJECTS</th>
+                                        <th>FULL MARKS</th>
+                                        <th>OBTAINED MARKS</th>
+                                        <th>TOTAL</th>
+                                        <th>REMARKS</th>
+                                    </tr>
+                                    <tr th:each="subjectMark : ${result.subjectMarkMap}">
+                                        <td th:text="${subjectMark.value.subjectId}">01</td>
+                                        <td th:text="${subjectMark.key}">ENGLISH</td>
+                                        <td>100</td>
+                                        <td>32</td>
+                                        <td th:text="${subjectMark.value.mark}">60</td>
+                                        <td><span th:if="${subjectMark.value.mark < 32}">F</span></td>
+
+                                    </tr>
+                                    <tr class="text-primary ">
+                                        <td colspan="2">RESULT: &nbsp; &nbsp;<span class="text-dark fw-bold" th:text="${result.status}"></span></td>
+                                        <td colspan="2">PERCENTAGE: &nbsp; &nbsp;<span class="text-dark fw-bold" th:text="${result.percentage}"></span></td>
+                                        <td colspan="2"> GRAND TOTAL: &nbsp; &nbsp;<span class="text-dark fw-bold" th:text="${result.totalMarks}"></span></td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
+                            <div class="row lh-1 mt-4">
+                                <p>To pass the examination candidates must secure 40% marks in subjects.</p>
+                                <p><span class="fw-bold">Note:</span> F and an asterisk (*) - Fail</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</main>
+<!--Main layout-->
+
+
+
+<div th:replace="common :: footer"></div>
+
+</body>
+</html>

@@ -1,23 +1,28 @@
 package com.javaWithSpringBoot.studentmanagementsystem.model;
 
+import com.javaWithSpringBoot.studentmanagementsystem.entity.Student;
+import com.javaWithSpringBoot.studentmanagementsystem.entity.StudentMark;
+
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sailesh on 11/29/21.
  */
 public class Result {
 
-    private List<StudentMark> studentMarkList;
+    private Student student;
+    private Map<String,StudentMark> subjectMarkMap;
     private Double totalMarks;
     private Double percentage;
-    private Boolean status;
+    private ResultStatus status;
 
-    public List<StudentMark> getStudentMarkList() {
-        return studentMarkList;
+    public Map<String, StudentMark> getSubjectMarkMap() {
+        return subjectMarkMap;
     }
 
-    public void setStudentMarkList(List<StudentMark> studentMarkList) {
-        this.studentMarkList = studentMarkList;
+    public void setSubjectMarkMap(Map<String, StudentMark> subjectMarkMap) {
+        this.subjectMarkMap = subjectMarkMap;
     }
 
     public Double getTotalMarks() {
@@ -36,18 +41,27 @@ public class Result {
         this.percentage = percentage;
     }
 
-    public Boolean getStatus() {
+    public ResultStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(ResultStatus status) {
         this.status = status;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     @Override
     public String toString() {
         return "Result{" +
-                "studentMarkList=" + studentMarkList +
+                "student=" + student +
+                ", subjectMarkMap=" + subjectMarkMap +
                 ", totalMarks=" + totalMarks +
                 ", percentage=" + percentage +
                 ", status=" + status +

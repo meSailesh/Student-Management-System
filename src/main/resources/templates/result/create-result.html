@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <div th:replace="common :: head"></div>
+
+</head>
+
+<body>
+<!--Main Navigation-->
+<div th:replace="common :: header"></div>
+
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <div class="row mb-4">
+            <div class="col"><a th:href="@{/result/all}" class="btn btn-info"><i class="fas fa-chevron-left"></i> Back</a>
+            </div>
+        </div>
+        <div class="row">result
+
+                <div class="row alert alert-danger" th:if="${error}" th:text="${error}">
+                </div>
+
+                <div class="row d-flex justify-content-center align-items-center">
+
+                    <div class="col-lg-12 col-xl-11">
+                        <div class="card text-black" style="border-radius: 25px;">
+                            <div class="card-title">
+                                <h3 class=" text-center mt-3 mx-3">Fill Student Marks</h3>
+                            </div>
+                            <div class="card-body p-md-5">
+                                <div class="row justify-content-center">
+                                    <form class="md-form" style="color: #757575;" th:action="@{/result/create}" th:object ="${resultDto}" method="post">
+
+                                        <div class="form-group mb-3">
+                                            <label class="control-label" for="selectCtrl">Student Name</label>
+                                            <select type="text" class="form-control" id="selectCtrl" th:field="*{selectedStudent}">
+                                                <option value="-1"  selected >Select student</option>
+                                                <option th:each="student, studentStat : *{students}"
+                                                        th:value="${student.key}"
+                                                        th:text="*{students[__${student.key}__]}"
+                                                         >test </option>
+                                            </select>
+                                        </div>
+
+                                      <div th:each="subjectMark, stat : *{subjectMarks}">
+                                          <div class="form-group">
+                                              <label for="input" th:text="${subjectMark.key}">Science</label>
+                                              <input type="number" min="0" max="100" id="input" class="form-control" placeholder="Mark out of 100" th:field="*{subjectMarks[__${subjectMark.key}__]}">
+                                          </div>
+
+                                      </div>
+
+                                        <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Save</button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</main>
+<!--Main layout-->
+
+
+<div th:replace="common :: footer"></div>
+
+</body>
+</html>

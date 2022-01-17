@@ -1,14 +1,27 @@
-package com.javaWithSpringBoot.studentmanagementsystem.model;
+package com.javaWithSpringBoot.studentmanagementsystem.entity;
+
+import javax.persistence.*;
 
 /**
  * Created by sailesh on 11/26/21.
  */
-public class StudentMark {
 
+@Entity
+@Table(name = "student_mark")
+public class StudentMark {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer studentMarkId;
+    @Column(name = "student_id", nullable = false)
+
     private Integer studentId;
+
+    @Column(name = "subject_id", nullable = false)
     private Integer subjectId;
-    private Double marks;
+
+    @Column(name = "mark", nullable = false)
+    private Double mark;
 
     @Override
     public String toString() {
@@ -16,7 +29,7 @@ public class StudentMark {
                 "studentMarkId=" + studentMarkId +
                 ", studentId=" + studentId +
                 ", subjectId=" + subjectId +
-                ", marks=" + marks +
+                ", marks=" + mark +
                 '}';
     }
 
@@ -44,15 +57,15 @@ public class StudentMark {
         this.subjectId = subjectId;
     }
 
-    public Double getMarks() {
-        return marks;
+    public Double getMark() {
+        return mark;
     }
 
-    public void setMarks(Double marks) {
-        this.marks = marks;
+    public void setMark(Double mark) {
+        this.mark = mark;
     }
 
     public String toCsvString() {
-        return studentMarkId + "," + studentId + "," + subjectId + "," +marks;
+        return studentMarkId + "," + studentId + "," + subjectId + "," +mark;
     }
 }
