@@ -1,6 +1,7 @@
 package com.javaWithSpringBoot.studentmanagementsystem.repository;
 
-import com.javaWithSpringBoot.studentmanagementsystem.model.StudentMark;
+import com.javaWithSpringBoot.studentmanagementsystem.entity.StudentMark;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -8,9 +9,7 @@ import java.util.List;
  * Created by sailesh on 11/26/21.
  */
 
-public interface StudentMarkRepository {
+public interface StudentMarkRepository extends JpaRepository<StudentMark, Long> {
 
-    List<StudentMark> createStudentMark(List<StudentMark> studentMarkList);
-
-    List<StudentMark> getStudentMark(Integer studentId);
+    List<StudentMark> getStudentMarkByStudentId(Integer studentId);
 }

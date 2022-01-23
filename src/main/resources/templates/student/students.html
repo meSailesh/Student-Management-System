@@ -10,7 +10,7 @@
 <!--Main Navigation-->
 
 <!--Main layout-->
-<main style="margin-top: 58px">
+<main style="margin-top: 58px; margin-bottom: 20px">
     <div class="container pt-4">
        <div class="container">
            <div class="row alert alert-success" th:if="${message}" th:text="${message}"></div>
@@ -43,7 +43,7 @@
                            <td th:text="${student.name}"></td>
                            <td th:text="${student.age}"></td>
                            <td th:text="${student.address}"></td>
-                           <td th:text="${student.dob}"></td>
+                           <td th:text="${#dates.format(student.dob,'dd-MM-yyyy')}"></td>
                            <td th:text="${student.gender}"></td>
 
                            <td>

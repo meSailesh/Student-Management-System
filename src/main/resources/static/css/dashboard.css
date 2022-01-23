@@ -37,3 +37,71 @@ body {
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
+
+.result-field {
+    text-align: left;
+    color: black;
+    border-bottom: 1px dotted gray;
+    text-transform: uppercase;
+}
+.name {
+    padding: 0 34%;
+}
+
+.dob {
+    padding: 0 35%;
+}
+
+.student-id {
+    padding: 0 19%;
+}
+
+.age {
+    padding:0 22%;
+}
+
+.address{
+    padding:0 29%;
+}
+
+.date {
+    padding:0 40%;
+}
+
+
+
+
+
+@media print {
+    .no-print {
+        display: none;
+    }
+
+    .print-only{
+        display: block;
+    }
+
+    .name {
+        padding: 0 23%;
+    }
+
+    .dob {
+        padding: 0 25%;
+    }
+
+    .student-id {
+        padding: 0 15%;
+    }
+
+    .age {
+        padding:0 15%;
+    }
+
+    .address{
+        padding:0 15%;
+    }
+
+    .date {
+        padding:0 30%;
+    }
+}

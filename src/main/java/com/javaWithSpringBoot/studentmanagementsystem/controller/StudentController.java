@@ -25,14 +25,13 @@ public class StudentController {
     public String viewStudents(Model model) {
         List<Student> students = studentService.getAllStudents();
         model.addAttribute("students", students);
-        model.addAttribute("activeTab", "active");
-        return "students";
+        return "student/students";
     }
 
     @GetMapping("/create")
     public String createStudentPage(Model model) {
         model.addAttribute("student", new Student());
-        return "create-student";
+        return "student/create-student";
     }
 
     @PostMapping("/create")
@@ -44,7 +43,7 @@ public class StudentController {
             return "redirect:/student/all";
         }
         model.addAttribute("error", "Error saving student details. Please retry!");
-        return "create-student";
+        return "student/create-student";
 
     }
 
@@ -52,14 +51,14 @@ public class StudentController {
     public String viewStudentDetail(@PathVariable(value = "id")Integer studentId, Model model) {
         Student student = studentService.getStudentDetails(studentId);
         model.addAttribute("student", student);
-        return "student-detail";
+        return "student/student-detail";
     }
 
-    @GetMapping("/student/update/{id}")
+    @GetMapping("/update/{id}")
     public String updateStudentDetailPage(@PathVariable(value = "id")Integer studentId, Model model) {
         Student student = studentService.getStudentDetails(studentId);
         model.addAttribute("student", student);
-        return "student-update";
+        return "student/student-update";
     }
 
     @PostMapping("/update")
@@ -70,7 +69,7 @@ public class StudentController {
             return "redirect:/student/all";
         }
         model.addAttribute("error", "Error updating student details. Please retry!");
-        return "student-update";
+        return "student/student-update";
     }
 
     @GetMapping("/student/{id}")
