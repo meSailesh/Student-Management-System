@@ -1,3 +1,4 @@
+Dropzone.autoDiscover = false;
 $(document).ready( function () {
     $('#student-table').DataTable();
 
@@ -13,7 +14,45 @@ $(document).ready( function () {
 
         $("#delete_student_modal").modal("show");
 
+    });
+
+    $("#submit").hide();
+    $("#error").hide();
+    $("#success").hide();
 
 
-    })
+    $("#my-dropzone").dropzone({
+        url: "/api/v1/upload-student",
+        autoProcessQueue: false,
+        acceptedFiles: ".csv",
+        uploadMultiple: false,
+        init : function () {
+            var submitButton = $("#submit");
+            myDropzone = this;
+
+            submitButton.on("click", function () {
+                myDropzone.processQueue();
+            })
+
+            this.on("addedfile", function() {
+                $("#submit").show();
+            });
+
+
+        },
+
+        error: function (file, response) {
+
+            $("#error").html("Sorry, we could not parse your file. Please confirm it is in correct format").show();
+
+            
+        },
+
+        success: function (file, response) {
+
+            $("#success").html("Student created successfully from file").show();
+
+
+        }
+    });
 } );

@@ -1,13 +1,22 @@
 package com.javaWithSpringBoot.studentmanagementsystem.controller;
 
 import com.javaWithSpringBoot.studentmanagementsystem.entity.Student;
+import com.javaWithSpringBoot.studentmanagementsystem.exception.InvalidFileFormatException;
+import com.javaWithSpringBoot.studentmanagementsystem.model.Response;
 import com.javaWithSpringBoot.studentmanagementsystem.service.StudentService;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -32,6 +41,12 @@ public class StudentController {
     public String createStudentPage(Model model) {
         model.addAttribute("student", new Student());
         return "student/create-student";
+    }
+
+    @GetMapping("/upload")
+    public String uploadStudentInfoPage(Model model) {
+        model.addAttribute("student", new Student());
+        return "student/upload-student";
     }
 
     @PostMapping("/create")
@@ -72,7 +87,7 @@ public class StudentController {
         return "student/student-update";
     }
 
-    @GetMapping("/student/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteStudent(@PathVariable(value = "id")Integer studentId, RedirectAttributes redirectAttributes) {
         Boolean isDeleted= studentService.deleteStudent(studentId);
         if(isDeleted) {
@@ -82,5 +97,7 @@ public class StudentController {
         }
         return "redirect:/student/all";
     }
+
+
 
 }
