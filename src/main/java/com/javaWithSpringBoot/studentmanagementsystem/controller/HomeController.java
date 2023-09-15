@@ -2,6 +2,8 @@ package com.javaWithSpringBoot.studentmanagementsystem.controller;
 
 import com.javaWithSpringBoot.studentmanagementsystem.student.Student;
 import com.javaWithSpringBoot.studentmanagementsystem.student.StudentService;
+import com.javaWithSpringBoot.studentmanagementsystem.subject.Subject;
+import com.javaWithSpringBoot.studentmanagementsystem.subject.SubjectService;
 import com.javaWithSpringBoot.studentmanagementsystem.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ import java.util.List;
 public class HomeController {
     @Autowired
     StudentService studentService;
+    @Autowired
+    SubjectService subjectService;
+
 
     @GetMapping("/")
     public String viewLoginPage(Model model) {
@@ -38,9 +43,14 @@ public class HomeController {
     @GetMapping("/dashboard")
     public String viewDashboard(Model model) {
         List<Student> students = studentService.getAllStudents();
+        List<Subject> subjects = subjectService.getAllSubject();
         Integer sizes = students.size();
-        System.out.println(sizes);
+        Integer subjectLength = subjects.size();
+//        System.out.println(sizes);
+//        System.out.println(subjectLength);
+
         model.addAttribute("studentLength", sizes);
+        model.addAttribute("subjectLength", subjectLength );
         return  "dashboard";
     }
 
@@ -51,10 +61,7 @@ public class HomeController {
         return "students";
     }
 
-    @GetMapping("/subjects")
-    public String viewSubjects() {
-        return "subjects";
-    }
+
 
     @GetMapping("/results")
     public String viewResults() {
@@ -67,8 +74,17 @@ public class HomeController {
         return "create-student";
     }
 
+
+    @GetMapping("/subject/create")
+    public String createSubject(Model model){
+        model.addAttribute("subject", new Subject());
+        return "create-subject";
+
+    }
+
     @PostMapping("/student/create")
-    public String createStudent(@ModelAttribute("student")Student student, Model model, RedirectAttributes redirectAttributes) {
+    public String createStudent(@ModelAttribute("student")Student student, Model model, RedirectAttributes redirectAttributes)
+    {
 
         Student savedStudent = studentService.createStudent(student);
         if(savedStudent != null) {
@@ -85,7 +101,10 @@ public class HomeController {
         Student student = studentService.getStudentDetails(studentId);
         model.addAttribute("student", student);
         return "student-detail";
+
     }
+
+
 
     @GetMapping("/student/update/{id}")
     public String updateStudentDetailPage(@PathVariable(value = "id")Integer studentId, Model model) {
@@ -114,6 +133,21 @@ public class HomeController {
             redirectAttributes.addFlashAttribute("error", "Error deleting student details. Please retry!");
         }
         return "redirect:/student/all";
+    }
+
+    @GetMapping("/subjects")
+    public String viewSubjects(Model model) {
+        List<Subject> subjects = subjectService.getAllSubject();
+        model.addAttribute("subjects", subjects);
+
+        return "subjects";
+    }
+
+    @GetMapping("/subject/{id}")
+    public String ViewSubjectDetails(@PathVariable(value = "id")Integer subjectId, Model model){
+        Subject subject = subjectService.getSubjectDetails(subjectId);
+        model.addAttribute("subject", subject);
+        return "subject-detail";
     }
 
 

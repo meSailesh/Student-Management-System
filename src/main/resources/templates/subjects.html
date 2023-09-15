@@ -2,79 +2,91 @@
 <html lang="en" xmlns:th = "http://www.thymeleaf.org/">
 <head>
     <div th:replace="common :: head"></div>
-
 </head>
 
 <body>
 <!--Main Navigation-->
 <div th:replace="common :: header"></div>
-
 <!--Main Navigation-->
 
 <!--Main layout-->
 <main style="margin-top: 58px">
     <div class="container pt-4">
-        <section>
+        <div class="container">
+<!--            <div class="row alert alert-success" th:if="${message}" th:text="${message}"></div>-->
             <div class="row">
-                <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between px-md-1">
-                                <div>
-                                    <h3 class="text-info">278</h3>
-                                    <p class="mb-0">Students</p>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fas fa-user text-info fa-3x"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between px-md-1">
-                                <div>
-                                    <h3 class="text-info">278</h3>
-                                    <p class="mb-0">Subjects</p>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fas fa-book text-info fa-3x"></i>
-                                </div>
-                            </div>
+                <div class="col mb-4">  <a th:href="@{/subject/create}" class="btn btn-success" >Create Subject</a></div>
+            </div>
+            <div class="col"></div>
+            <div class="row">
+                <section>
+                    <table id="student-table" class="table table-striped" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th class="th-sm">Id
+                            </th>
+                            <th class="th-sm">Name
+                            </th>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between px-md-1">
-                                <div>
-                                    <h3 class="text-warning">156</h3>
-                                    <p class="mb-0">Exam Results</p>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fas fa-graduation-cap text-warning fa-3x"></i>
-                                </div>
-                            </div>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="subject: ${subjects}">
+                            <td th:text="${subject.subjectId}"></td>
+                            <td th:text="${subject.SubjectName}"></td>
 
+
+                            <td>
+                                <a  class="btn btn-warning" th:href="@{/subject/{id}(id=${subject.subjectId})}">View</a>
+                                <a  class="btn btn-info" >update</a>
+                                <a  class="btn btn-danger delete_student_button" >delete</a>
+                                <!-- Button trigger modal -->
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+            </div>
+            <div class="row">
+
+
+                <!-- Modal -->
+                <div
+                        class="modal fade"
+                        id="delete_student_modal"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
+                >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Subject</h5>
+                                <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-mdb-dismiss="modal"
+                                        aria-label="Close"
+                                ></button>
+                            </div>
+                            <div class="modal-body">Are you sure want to delete this student?</div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                                    Close
+                                </button>
+                                <a id="delete_button_modal" class="btn btn-primary">Delete</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </section>
+        </div>
 
 
     </div>
 </main>
 <!--Main layout-->
-
-
 <div th:replace="common :: footer"></div>
-
-
 </body>
 </html>
