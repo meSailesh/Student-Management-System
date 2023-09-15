@@ -1,17 +1,15 @@
 package com.javaWithSpringBoot.studentmanagementsystem.repository;
 
-import com.javaWithSpringBoot.studentmanagementsystem.studentMarks.StudentMark;
-import org.springframework.stereotype.Repository;
+//import com.javaWithSpringBoot.studentmanagementsystem.studentMarks.StudentMark;
+import com.javaWithSpringBoot.studentmanagementsystem.studentResult.Result;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
 
-/**
- * Created by sailesh on 11/26/21.
- */
+public interface StudentMarkRepository extends JpaRepository<Result, Long> {
 
-public interface StudentMarkRepository {
+//    List<StudentMark> createStudentMark(List<StudentMark> studentMarkList);
+//
+//    List<StudentMark> getStudentMark(Integer studentId);
 
-    List<StudentMark> createStudentMark(List<StudentMark> studentMarkList);
 
-    List<StudentMark> getStudentMark(Integer studentId);
 }

@@ -6,21 +6,21 @@
 
 <body>
 <!--Main Navigation-->
-<div th:replace="common :: header"></div>
+<div th:replace="common :: subject"></div>
 <!--Main Navigation-->
 
 <!--Main layout-->
 <main style="margin-top: 58px">
     <div class="container pt-4">
         <div class="container">
-<!--            <div class="row alert alert-success" th:if="${message}" th:text="${message}"></div>-->
+            <div class="row alert alert-success" th:if="${message}" th:text="${message}"></div>
             <div class="row">
                 <div class="col mb-4">  <a th:href="@{/subject/create}" class="btn btn-success" >Create Subject</a></div>
             </div>
             <div class="col"></div>
             <div class="row">
                 <section>
-                    <table id="student-table" class="table table-striped" cellspacing="0" width="100%">
+                    <table id="subject-table" class="table table-striped">
                         <thead>
                         <tr>
                             <th class="th-sm">Id
@@ -37,9 +37,15 @@
 
 
                             <td>
-                                <a  class="btn btn-warning" th:href="@{/subject/{id}(id=${subject.subjectId})}">View</a>
-                                <a  class="btn btn-info" >update</a>
-                                <a  class="btn btn-danger delete_student_button" >delete</a>
+<!--                                <a  class="btn btn-warning" th:href="@{/subject/{id}(id=${subject.subjectId})}">View</a>-->
+                                <a  class="btn btn-info" th:href="@{/subject/update/{id}/(id=${subject.subjectId})}" >update</a>
+<!--                                <a  class="btn btn-danger delete_subject_button" th:attr="data-id = ${subject.subjectId}">delete</a>-->
+                                <a  class="btn btn-danger" id="deleteButton" th:href="@{/subject/delete/{id}/(id=${subject.subjectId})}">delete</a>
+
+
+                                <!--                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">-->
+<!--                                    Delete-->
+<!--                                </button>-->
                                 <!-- Button trigger modal -->
                             </td>
                         </tr>
@@ -48,38 +54,64 @@
 
                 </section>
             </div>
+            <!-- Modal -->
             <div class="row">
+                <!-- Modal -->
+                <!-- Button trigger modal -->
 
 
                 <!-- Modal -->
-                <div
-                        class="modal fade"
-                        id="delete_student_modal"
-                        tabindex="-1"
-                        aria-labelledby="exampleModalLabel"
-                        aria-hidden="true"
-                >
-                    <div class="modal-dialog">
+                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Delete Subject</h5>
-                                <button
-                                        type="button"
-                                        class="btn-close"
-                                        data-mdb-dismiss="modal"
-                                        aria-label="Close"
-                                ></button>
-                            </div>
-                            <div class="modal-body">Are you sure want to delete this student?</div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                                    Close
+                                <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
-                                <a id="delete_button_modal" class="btn btn-primary">Delete</a>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete ??
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" href="" class="btn btn-primary" id="delRef">Delete</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+
+<!--                <div-->
+<!--                        class="modal fade"-->
+<!--                        id="deleteModal"-->
+<!--                        tabindex="-1"-->
+<!--                        aria-labelledby="exampleModalLabel"-->
+<!--                        aria-hidden="true"-->
+<!--                        role="dialog"-->
+<!--                >-->
+<!--                    <div class="modal-dialog">-->
+<!--                        <div class="modal-content">-->
+<!--                            <div class="modal-header">-->
+<!--                                <h5 class="modal-title" id="exampleModalLabel">Delete Subject</h5>-->
+<!--                                <button-->
+<!--                                        type="button"-->
+<!--                                        class="btn-close"-->
+<!--                                        data-mdb-dismiss="modal"-->
+<!--                                        aria-label="Close"-->
+<!--                                ></button>-->
+<!--                            </div>-->
+<!--                            <div class="modal-body">Are you sure want to delete this student?</div>-->
+<!--                            <div class="modal-footer">-->
+<!--                                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">-->
+<!--                                    Close-->
+<!--                                </button>-->
+<!--                                <a th:href="@{/subject/delete/{id}(id=_id_)}" id="delete_button_modal" class="btn btn-primary" >Delete</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
 
@@ -87,6 +119,6 @@
     </div>
 </main>
 <!--Main layout-->
-<div th:replace="common :: footer"></div>
+<div th:replace="common :: footer1"></div>
 </body>
 </html>

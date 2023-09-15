@@ -29,10 +29,10 @@
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-4">
-                    <a th:href="@{/dashboard}" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+                    <a th:href="@{/dashboard}" class="list-group-item list-group-item-action py-2 ripple active">
                         <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
                     </a>
-                    <a th:href="@{/student/all}" class="list-group-item list-group-item-action py-2 ripple active">
+                    <a th:href="@{/student/all}" class="list-group-item list-group-item-action py-2 ripple" >
                         <i class="fas fa-user fa-fw me-3"></i><span>Students </span>
                     </a>
                     <a th:href="@{/subjects}" class="list-group-item list-group-item-action py-2 ripple">
@@ -81,6 +81,181 @@
         <!-- Navbar -->
     </header>
 </div>
+<div th:fragment="student">
+    <header>
+        <!-- Sidebar -->
+        <nav id="sidebarMenu1" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                    <a th:href="@{/dashboard}" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
+                    </a>
+                    <a th:href="@{/student/all}" class="list-group-item list-group-item-action py-2 ripple active">
+                        <i class="fas fa-user fa-fw me-3"></i><span>Students </span>
+                    </a>
+                    <a th:href="@{/subjects}" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="fas fa-book fa-fw me-3"></i><span>Subjects </span>
+                    </a>
+
+                    <a th:href="@{/results}" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="fas fa-graduation-cap fa-fw me-3"></i><span>Exam Results </span>
+                    </a>
+
+
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Sidebar -->
+
+        <!-- Navbar -->
+        <nav id="main-navbar1" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+                        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">
+                    Student Management System
+                </a>
+
+
+                <!-- Right links -->
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+    </header>
+</div>
+<div th:fragment="subject">
+    <header>
+        <!-- Sidebar -->
+        <nav id="sidebarMenu2" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                    <a th:href="@{/dashboard}" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
+                    </a>
+                    <a th:href="@{/student/all}" class="list-group-item list-group-item-action py-2 ripple ">
+                        <i class="fas fa-user fa-fw me-3"></i><span>Students </span>
+                    </a>
+                    <a th:href="@{/subjects}" class="list-group-item list-group-item-action py-2 ripple active">
+                        <i class="fas fa-book fa-fw me-3"></i><span>Subjects </span>
+                    </a>
+
+                    <a th:href="@{/results}" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="fas fa-graduation-cap fa-fw me-3"></i><span>Exam Results </span>
+                    </a>
+
+
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Sidebar -->
+
+        <!-- Navbar -->
+        <nav id="main-navbar2" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+                        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">
+                    Student Management System
+                </a>
+
+
+                <!-- Right links -->
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+    </header>
+</div>
+<div th:fragment="marks">
+    <header>
+        <!-- Sidebar -->
+        <nav id="sidebarMenu3" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                    <a th:href="@{/dashboard}" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
+                    </a>
+                    <a th:href="@{/student/all}" class="list-group-item list-group-item-action py-2 ripple ">
+                        <i class="fas fa-user fa-fw me-3"></i><span>Students </span>
+                    </a>
+                    <a th:href="@{/subjects}" class="list-group-item list-group-item-action py-2 ripple">
+                        <i class="fas fa-book fa-fw me-3"></i><span>Subjects </span>
+                    </a>
+
+                    <a th:href="@{/results}" class="list-group-item list-group-item-action py-2 ripple active">
+                        <i class="fas fa-graduation-cap fa-fw me-3"></i><span>Exam Results </span>
+                    </a>
+
+
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Sidebar -->
+
+        <!-- Navbar -->
+        <nav id="main-navbar3" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+                        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">
+                    Student Management System
+                </a>
+
+
+                <!-- Right links -->
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+    </header>
+</div>
+
 <!--Main Navigation-->
 
 <div th:fragment="footer">
@@ -89,6 +264,16 @@
     <script type="text/javascript" th:src="@{/js/datatable.min.js}"></script><!-- Custom scripts -->
     <script type ="text/javascript" th:src="@{/js/mdb.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/dashboard.js}"></script>
+    <script type="text/javascript" th:src="@{/js/subjectdel.js}"></script>
+
+</div>
+<div th:fragment="footer1">
+    <!-- MDB -->
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/datatable.min.js}"></script><!-- Custom scripts -->
+    <script type ="text/javascript" th:src="@{/js/mdb.min.js}"></script>
+<!--    <script type="text/javascript" th:src="@{/js/dashboard.js}"></script>-->
+    <script type="text/javascript" th:src="@{/js/subjectdel.js}"></script>
 
 </div>
 </body>

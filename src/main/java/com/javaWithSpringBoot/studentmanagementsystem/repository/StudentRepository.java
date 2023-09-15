@@ -7,9 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by sailesh on 11/23/21.
- */
 public interface StudentRepository extends CrudRepository<Student, Integer> {
     List<Student> findAll();
 //    Student saveStudentDetails(Student student);

@@ -1,17 +1,12 @@
 package com.javaWithSpringBoot.studentmanagementsystem.student;
 
 import com.javaWithSpringBoot.studentmanagementsystem.repository.StudentRepository;
-//import com.javaWithSpringBoot.studentmanagementsystem.repository.StudentRepositoryImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
-/**
- * Created by sailesh on 11/23/21.
- */
 @Service
 public class StudentService {
 
@@ -45,6 +40,8 @@ public class StudentService {
 
         return studentRepository.findById(studentId).get();
     }
+
+
 //(Student student) contain new value
     public Student updateStudentDetails(Student student) {
         Boolean isValid = validateStudent(student);

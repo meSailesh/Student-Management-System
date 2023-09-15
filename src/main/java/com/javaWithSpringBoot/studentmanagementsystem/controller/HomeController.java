@@ -5,6 +5,7 @@ import com.javaWithSpringBoot.studentmanagementsystem.student.StudentService;
 import com.javaWithSpringBoot.studentmanagementsystem.subject.Subject;
 import com.javaWithSpringBoot.studentmanagementsystem.subject.SubjectService;
 import com.javaWithSpringBoot.studentmanagementsystem.user.User;
+import com.javaWithSpringBoot.studentmanagementsystem.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,16 +13,17 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Objects;
 
-/**
- * Created by sailesh on 12/6/21.
- */
 @Controller
 public class HomeController {
     @Autowired
     StudentService studentService;
     @Autowired
     SubjectService subjectService;
+    @Autowired
+    UserService userService;
+
 
 
     @GetMapping("/")
@@ -34,7 +36,9 @@ public class HomeController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute("user")User user, Model model) {
-        if(user.getEmail().equals("sailesh@gmail.com") && user.getPassword().equals("test")) {
+        User outhUser = userService.loginCheck(user.getEmail(), user.getPassword());
+        System.out.println(outhUser);
+        if(Objects.nonNull(outhUser)) {
             return "redirect:/dashboard";
         }
         model.addAttribute("error", "Email or password don't match.");
@@ -61,19 +65,11 @@ public class HomeController {
         return "students";
     }
 
-
-
-    @GetMapping("/results")
-    public String viewResults() {
-        return "results";
-    }
-
     @GetMapping("/student/create")
     public String createStudentPage(Model model) {
         model.addAttribute("student", new Student());
         return "create-student";
     }
-
 
     @GetMapping("/subject/create")
     public String createSubject(Model model){
@@ -82,8 +78,21 @@ public class HomeController {
 
     }
 
+    @PostMapping("/subject/create")
+    public String createSubject(@ModelAttribute("subject") Subject subject, Model model, RedirectAttributes redirectAttributes)
+    {
+        Subject saveSubject = subjectService.createSubject(subject);
+        if(saveSubject !=null){
+            redirectAttributes.addFlashAttribute("message", "Subject Created successfully!");
+            return "redirect:/subjects";
+        }
+        model.addAttribute("error", "Error saving subject details. Please retry!");
+        return  "create-subject";
+    }
+
     @PostMapping("/student/create")
-    public String createStudent(@ModelAttribute("student")Student student, Model model, RedirectAttributes redirectAttributes)
+    public String createStudent(
+            @ModelAttribute("student")Student student, Model model, RedirectAttributes redirectAttributes)
     {
 
         Student savedStudent = studentService.createStudent(student);
@@ -103,9 +112,6 @@ public class HomeController {
         return "student-detail";
 
     }
-
-
-
     @GetMapping("/student/update/{id}")
     public String updateStudentDetailPage(@PathVariable(value = "id")Integer studentId, Model model) {
         Student student = studentService.getStudentDetails(studentId);
@@ -150,6 +156,36 @@ public class HomeController {
         return "subject-detail";
     }
 
+    @GetMapping("/subject/update/{id}")
+    public String updateSubjectpage(@PathVariable(value = "id") Integer subjectId, Model model){
+        Subject subject = subjectService.getSubjectDetails(subjectId);
+        model.addAttribute("subject", subject);
+        return "subject-update";
+    }
+    @PostMapping("subject/update")
+    public String updateSubjectDetails(@ModelAttribute("subject") Subject subject, Model model, RedirectAttributes redirectAttributes){
+        Subject updateSubject = subjectService.updateSubjectDetails(subject);
+        if(updateSubject != null){
+            redirectAttributes.addFlashAttribute("message", "Subject is Updated successfully");
+            return"redirect:/subjects";
+        }
+        model.addAttribute("error", "Some error occurred during update");
+        return "subject-update";
+    }
 
+    @GetMapping("/subject/delete/{id}")
+    public String deleteSubject(@PathVariable(value = "id")Integer subjectId, RedirectAttributes redirectAttributes) {
+        Boolean isDeleted= subjectService.deleteSubject(subjectId);
+        if(isDeleted) {
+            redirectAttributes.addFlashAttribute("message", "Student deleted successfully!");
+        } else {
+            redirectAttributes.addFlashAttribute("error", "Error deleting student details. Please retry!");
+        }
+        return "redirect:/subjects";
+    }
 
+    @GetMapping("/results")
+    public String viewResults() {
+        return "results";
+    }
 }

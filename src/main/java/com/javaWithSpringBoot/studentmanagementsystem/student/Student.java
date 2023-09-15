@@ -2,7 +2,6 @@ package com.javaWithSpringBoot.studentmanagementsystem.student;
 
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Date;

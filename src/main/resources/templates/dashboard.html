@@ -10,7 +10,6 @@
 <div th:replace="common :: header"></div>
 
 <!--Main Navigation-->
-
 <!--Main layout-->
 <main style="margin-top: 58px">
     <div class="container pt-4">
@@ -18,49 +17,58 @@
             <div class="row">
                 <div class="col-xl-3 col-sm-6 col-12 mb-4">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between px-md-1">
-                                <div>
-                                    <h3 class="text-info" th:text="${studentLength}"></h3>
-                                    <p class="mb-0">Students</p>
-                                </div>
-                                <div class="align-self-center">
-                                    <i class="fas fa-user text-info fa-3x"></i>
+                        <a th:href="@{/student/all}">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between px-md-1">
+                                    <div>
+                                        <h3 class="text-info" th:text="${studentLength}"></h3>
+                                        <p class="mb-0">Students</p>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fas fa-user text-info fa-3x"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 col-12 mb-4">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between px-md-1">
-                                <div>
-                                    <h3 class="text-info" th:text="${subjectLength}" ></h3>
-                                    <p class="mb-0">Subjects</p>
+                        <a th:href="@{/subjects}">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between px-md-1">
+                                    <div>
+                                        <h3 class="text-info" th:text="${subjectLength}" ></h3>
+                                        <p class="mb-0">Subjects</p>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fas fa-book text-info fa-3x"></i>
+                                    </div>
                                 </div>
-                                <div class="align-self-center">
-                                    <i class="fas fa-book text-info fa-3x"></i>
-                                </div>
-                            </div>
 
-                        </div>
+                            </div>
+                        </a>
+
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 col-12 mb-4">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between px-md-1">
-                                <div>
-                                    <h3 class="text-warning">156</h3>
-                                    <p class="mb-0">Exam Results</p>
+                        <a th:href="@{/results}">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between px-md-1">
+                                    <div>
+                                        <h3 class="text-warning">156</h3>
+                                        <p class="mb-0">Exam Results</p>
+                                    </div>
+                                    <div class="align-self-center">
+                                        <i class="fas fa-graduation-cap text-warning fa-3x"></i>
+                                    </div>
                                 </div>
-                                <div class="align-self-center">
-                                    <i class="fas fa-graduation-cap text-warning fa-3x"></i>
-                                </div>
-                            </div>
 
-                        </div>
+                            </div>
+                        </a>
+
                     </div>
                 </div>
             </div>
